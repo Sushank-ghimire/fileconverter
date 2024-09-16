@@ -1,101 +1,59 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import FileConvert from "@/components/FileConvert";
+import Footer from "@/components/Footer";
+import { useTheme } from "next-themes";
+import React, { useEffect } from "react";
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
+
+const HomePage = () => {
+  const { theme, setTheme } = useTheme();
+
+  const handleTheme = () => {
+    if (theme === "light") setTheme("dark");
+    else setTheme("light");
+  };
+
+  useEffect(() => {
+    console.log(theme);
+  }, [theme])
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      <main className="min-h-screen overflow-x-hidden w-screen dark:bg-[#000000] text-xl md:text-2xl p-4 dark:text-slate-100">
+        <nav className="px-3 flex justify-between items-center">
+          <div className="text-3xl p-3 flex gap-1 cursor-pointer tracking-tight">
+            <span className="font-bold">File Flow</span>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={handleTheme}
+            className="btn btn-ghost p-3 text-xl md:mr-8 mr-4"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {theme == "light" ? <MdOutlineLightMode /> : <MdDarkMode />}
+          </button>
+        </nav>
+
+        <section className="mt-4 w-[90vw] md:w-[80vw] mx-auto">
+          <h1 className="text-center text-2xl md:text-5xl md:font-bold tracking-wider font-bold pt-10 pb-3">
+            Free Unlimited File Converter
+          </h1>
+          <p className="mt-4 text-lg text-center dark:text-slate-400">
+            Introducing File Flow your go-to online tool for unlimited and free
+            multimedia conversion, all processed{" "}
+            <span className="text-blue-700">
+              locally on your device for enhanced privacy and security.
+            </span>{" "}
+            Easily convert images, audio, and videos without any restrictions.
+            Start converting now and streamline your content effortlessly with
+            File Flow!
+          </p>
+        </section>
+        <div className="mt-4 w-[90vw] md:w-[80vw] mx-auto p-4 pb-10">
+          <FileConvert />
         </div>
+        <Footer />
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
   );
-}
+};
+
+export default HomePage;
