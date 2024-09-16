@@ -2,10 +2,14 @@
 
 const Footer = () => {
   return (
-    <footer className="w-[90vw] md:w-[80vw] mx-auto text-center text-xs">
-      <span>
-        &copy; made by sushank_ghimire <span className="text-red-500">❤</span>
-      </span>
+    <footer className="text-center bottom-0 mt-12 text-xs pb-8 w-full h-fit p-4">
+      made with <span className="text-red-700">❤</span> by{" "}
+      <a
+        className="cursor-pointer text-blue-600"
+        href="mailto: ghimiresushank64@gmail.com"
+      >
+        sushank_ghimire
+      </a>
     </footer>
   );
 };
