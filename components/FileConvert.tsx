@@ -6,7 +6,7 @@ import { MdClose } from "react-icons/md";
 import ReactDropzone from "react-dropzone";
 import bytesToSize from "@/utils/bytes-to-size";
 import fileToIcon from "@/utils/file-to-icon";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, MutableRefObject } from "react";
 import { useToast } from "@/hooks/use-toast";
 import compressFileName from "@/utils/compress-file-name";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -70,11 +70,11 @@ export default function Dropzone() {
   const [is_hover, setIsHover] = useState<boolean>(false);
   const [actions, setActions] = useState<Action[]>([]);
   const [is_ready, setIsReady] = useState<boolean>(false);
-  const [files, setFiles] = useState<Array<any>>([]);
+  const [files, setFiles] = useState<any[]>([]);
   const [is_loaded, setIsLoaded] = useState<boolean>(false);
   const [is_converting, setIsConverting] = useState<boolean>(false);
   const [is_done, setIsDone] = useState<boolean>(false);
-  const ffmpegRef = useRef<any>(null);
+  const ffmpegRef = useRef<any | null>(null);
   const [defaultValues, setDefaultValues] = useState<string>("video");
   const [selcted, setSelected] = useState<string>("...");
   const accepted_files = {
@@ -104,7 +104,7 @@ export default function Dropzone() {
     setIsConverting(false);
   };
   const downloadAll = (): void => {
-    for (let action of actions) {
+    for (const action of actions) {
       !action.is_error && download(action);
     }
   };
@@ -128,7 +128,7 @@ export default function Dropzone() {
     }));
     setActions(tmp_actions);
     setIsConverting(true);
-    for (let action of tmp_actions) {
+    for (const action of tmp_actions) {
       try {
         const { url, output } = await convertFile(ffmpegRef.current, action);
         tmp_actions = tmp_actions.map((elt) =>
@@ -160,12 +160,11 @@ export default function Dropzone() {
     setIsDone(true);
     setIsConverting(false);
   };
-  const handleUpload = (data: Array<any>): void => {
+  const handleUpload = (data: any[]): void => {
     handleExitHover();
     setFiles(data);
     const tmp: Action[] = [];
     data.forEach((file: any) => {
-      const formData = new FormData();
       tmp.push({
         file_name: file.name,
         file_size: file.size,
@@ -182,11 +181,10 @@ export default function Dropzone() {
   };
   const handleHover = (): void => setIsHover(true);
   const handleExitHover = (): void => setIsHover(false);
-  const updateAction = (file_name: String, to: String) => {
+  const updateAction = (file_name: string, to: string) => {
     setActions(
       actions.map((action): Action => {
         if (action.file_name === file_name) {
-          console.log("FOUND");
           return {
             ...action,
             to,
@@ -214,7 +212,9 @@ export default function Dropzone() {
       setFiles([]);
       setIsReady(false);
       setIsConverting(false);
-    } else checkIsReady();
+    } else {
+      checkIsReady();
+    }
   }, [actions]);
   useEffect(() => {
     load();
@@ -349,7 +349,10 @@ export default function Dropzone() {
             )}
 
             {action.is_converted ? (
-              <button className="btn btn-ghost" onClick={() => download(action)}>
+              <button
+                className="btn btn-ghost"
+                onClick={() => download(action)}
+              >
                 Download
               </button>
             ) : (
@@ -372,10 +375,7 @@ export default function Dropzone() {
                 {actions.length > 1 ? "Download All" : "Download"}
                 <HiOutlineDownload />
               </button>
-              <button
-                onClick={reset}
-                className="rounded-xl btn btn-ghost"
-              >
+              <button onClick={reset} className="rounded-xl btn btn-ghost">
                 Convert Another File(s)
               </button>
             </div>
