@@ -7,6 +7,7 @@ import { jsPDF } from "jspdf";
 import { Badge } from "@/components/ui/badge";
 import { MdDone } from "react-icons/md";
 import { DownloadIcon } from "@radix-ui/react-icons";
+import { Metadata } from "next";
 
 const Page = () => {
   const [pdf, setPdf] = useState<jsPDF | null>(null);
@@ -60,7 +61,7 @@ const Page = () => {
   });
 
   return (
-    <main className="min-h-screen overflow-x-hidden w-screen dark:bg-[#000000] text-xl md:text-2xl p-4 dark:text-slate-100">
+    <div className="min-h-screen overflow-x-hidden w-screen dark:bg-[#000000] text-xl md:text-2xl p-4 dark:text-slate-100">
       <Navbar />
       <section className="w-[90vw] mx-auto md:w-[80vw] py-8 px-12 text-xl text-center md:text-3xl">
         <h1>Convert your images (.jpg, .png) to PDF</h1>
@@ -92,7 +93,10 @@ const Page = () => {
                   <MdDone />
                 </Badge>
               )}
-              <button onClick={downloadPDF} className="w-fit btn btn-ghost dark:btn-outline dark:text-white">
+              <button
+                onClick={downloadPDF}
+                className="w-fit btn btn-ghost dark:btn-outline dark:text-white"
+              >
                 Download PDF <DownloadIcon />
               </button>
             </div>
@@ -102,7 +106,7 @@ const Page = () => {
           </>
         )}
       </section>
-    </main>
+    </div>
   );
 };
 

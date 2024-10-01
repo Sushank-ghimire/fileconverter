@@ -28,6 +28,8 @@ export const metadata: Metadata = {
     "Free",
     "Unlimited",
   ],
+  authors: [{ name: "Sushank Ghimire" }],
+
 };
 
 export default function RootLayout({

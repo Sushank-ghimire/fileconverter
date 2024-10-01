@@ -10,7 +10,6 @@ import { MdDone } from "react-icons/md";
 import { DownloadIcon } from "@radix-ui/react-icons";
 
 const Page = () => {
-
   const [pdf, setPdf] = useState<jsPDF | null>(null);
 
   const [isConverted, setIsConverted] = useState(false);
@@ -18,7 +17,7 @@ const Page = () => {
   const convertOtherFiles = () => {
     setIsConverted(false);
     setPdf(null);
-  }
+  };
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
 
@@ -66,7 +65,7 @@ const Page = () => {
   });
 
   return (
-    <main className="min-h-screen overflow-x-hidden w-screen dark:bg-[#000000] text-xl md:text-2xl p-4 dark:text-slate-100">
+    <div className="min-h-screen overflow-x-hidden w-screen dark:bg-[#000000] text-xl md:text-2xl p-4 dark:text-slate-100">
       <Navbar />
       <section className="w-[90vw] mx-auto md:w-[80vw] py-8 px-12 text-xl text-center md:text-3xl">
         <h1>Convert your documents (.docx) to PDF</h1>
@@ -98,20 +97,20 @@ const Page = () => {
                   <MdDone />
                 </Badge>
               )}
-              <button onClick={downloadPDF} className="w-fit btn btn-ghost dark:btn-outline dark:text-white">
+              <button
+                onClick={downloadPDF}
+                className="w-fit btn btn-ghost dark:btn-outline dark:text-white"
+              >
                 Download PDF <DownloadIcon />
               </button>
             </div>
-            <button
-              onClick={convertOtherFiles}
-              className="btn btn-outline"
-            >
+            <button onClick={convertOtherFiles} className="btn btn-outline">
               Convert other files
             </button>
           </>
         )}
       </section>
-    </main>
+    </div>
   );
 };
 
