@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FileConverter
 
-## Getting Started
+A robust application for converting files, supporting multiple image formats. This project simplifies file conversions with a clean, responsive interface. Built using **Next.js**, **TypeScript**, **FFmpeg**, and **TailwindCSS**, it allows users to upload files directly from their local device and convert them seamlessly.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Image Conversion**: Upload images from your local device and convert them to other formats effortlessly.
+- **Landing Page**: A visually appealing introduction to the app.
+- **Conversion Page**: Intuitive UI for uploading and converting files.
+- **Responsive Design**: Optimized for all device types using TailwindCSS.
+- **Efficient Processing**: Powered by FFmpeg for high-quality conversions.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js
+- **Language**: TypeScript
+- **Styling**: TailwindCSS
+- **Media Processing**: FFmpeg
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Images
 
-## Learn More
+Below are screenshots of the application:
 
-To learn more about Next.js, take a look at the following resources:
+### Landing Page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Landing Page Dark Mode](./public/fileconverter.PNG)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Conversion Page
 
-## Deploy on Vercel
+![Conversion Page Light Mode](./public/fileconverter%204.JPG)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Conversion Page](./public/fileconverter%201.PNG)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Document Conversion Page
+
+![Document Conversion Page](./public/fileconverter%203.PNG)
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Sushank-ghimire/fileconverter.git
+   cd fileconverter
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Set up FFmpeg:
+
+   - Download and install FFmpeg from [FFmpeg.org](https://ffmpeg.org/download.html).
+   - Ensure it is added to your system's PATH.
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Access the app at: [http://localhost:3000](http://localhost:3000)
+
+## Usage
+
+1. Open the **Landing Page** to understand the app's features and functionality.
+2. Navigate to the **Conversion Page** to upload an image file from your local device.
+3. Select the desired output format.
+4. Click **Convert** and download the converted file.
+
+## Contribution
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-name`.
+3. Make your changes and commit: `git commit -m "Description of changes"`.
+4. Push to the branch: `git push origin feature-name`.
+5. Open a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Built with ❤️ by [Sushank Ghimire](https://github.com/Sushank-ghimire).
