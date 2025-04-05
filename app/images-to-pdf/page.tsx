@@ -7,7 +7,6 @@ import { jsPDF } from "jspdf";
 import { Badge } from "@/components/ui/badge";
 import { MdDone } from "react-icons/md";
 import { DownloadIcon } from "@radix-ui/react-icons";
-import { Metadata } from "next";
 
 const Page = () => {
   const [pdf, setPdf] = useState<jsPDF | null>(null);

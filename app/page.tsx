@@ -1,13 +1,10 @@
 "use client";
-
 import FileConvert from "@/components/FileConvert";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Link from "next/link";
 import React from "react";
 
 const HomePage = () => {
-
   return (
     <main className="min-h-screen overflow-x-hidden w-screen dark:bg-[#000000] text-xl md:text-2xl p-4 dark:text-slate-100">
       <Navbar />

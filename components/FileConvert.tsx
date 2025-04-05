@@ -6,7 +6,7 @@ import { MdClose } from "react-icons/md";
 import ReactDropzone from "react-dropzone";
 import bytesToSize from "@/utils/bytes-to-size";
 import fileToIcon from "@/utils/file-to-icon";
-import { useState, useEffect, useRef, MutableRefObject } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import compressFileName from "@/utils/compress-file-name";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -218,7 +218,7 @@ export default function Dropzone() {
   }, [actions]);
   useEffect(() => {
     load();
-  }, []);
+  }, [checkIsReady]);
   const load = async () => {
     const ffmpeg_response: FFmpeg = await loadFfmpeg();
     ffmpegRef.current = ffmpeg_response;
