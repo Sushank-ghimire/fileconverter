@@ -5,8 +5,7 @@ const nextConfig = {
   },
   env: {
     SITE_DOMAIN: process.env.SITE_DOMAIN,
-  },
-  distDir: "dist",
+  }
 };
 
 export default nextConfig;
